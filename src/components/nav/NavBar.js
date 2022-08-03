@@ -5,15 +5,17 @@ export const NavBar = () => {
     const navigate = useNavigate()
     return (
         <ul className="navbar">
-            <li className="navbar__item">
-                Navigation link
-            </li>
-            <li className="navbar__item">
-                Navigation link
-            </li>
-            <li className="navbar__item">
-                Navigation link
-            </li>
+            <Link className="navbar__link" to="/events">
+                <li className="navbar__item">
+                    Events
+                </li>
+            </Link>
+            <Link className="navbar__link" to="/games">
+                <li className="navbar__item">
+                    Games
+                </li>
+            </Link>
+
             {
                 (localStorage.getItem("lu_token") !== null) ?
                     <li className="nav-item">
