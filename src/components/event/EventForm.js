@@ -20,7 +20,7 @@ export const EventForm = () => {
     }, [])
 
     const changeEventState = (event) => {
-        const copy = {... newEvent}
+        const copy = { ...newEvent}
         copy[event.target.name] = event.target.value
         setEvent(copy)
     }
@@ -52,7 +52,7 @@ export const EventForm = () => {
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="gameId">Pick the Game:</label>
-                    <select className="form-control" name="gameId" value={newEvent.gameId} required onChange={changeEventState}>
+                    <select className="form-control" name="gameId" required onChange={changeEventState}>
                         <option value="0">Choose Game:</option>
                         {
                             games.map(game => {
@@ -73,6 +73,7 @@ export const EventForm = () => {
                     time: newEvent.time,
                     game: parseInt(newEvent.gameId),
                     organizer: parseInt(localStorage.getItem("lu_token"))
+
                 }
                 // Send POST request to API
                 createEvent(event)
