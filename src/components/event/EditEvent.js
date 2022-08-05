@@ -34,7 +34,8 @@ export const EditEvent = () => {
         updatedEvent(copy)
     }
 
-    // 🦖🦖🦖 drop down is not appearing on edit. 🦩🦩🦩
+    // 🦖🦖🦖have to select the dropdown on the edit, otherwise it will not work
+
     return (
         <form className="eventForm">
             <h2 className="eventForm__description">Update Event</h2>
@@ -61,8 +62,8 @@ export const EditEvent = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="gameId">Pick the Game:</label>
-                    <select className="form-control" name="gameId" value={event.gameId} required
+                    <label htmlFor="game">Pick the Game:</label>
+                    <select className="form-control" name="game" value={event.game?.id} required
                         onChange={changeEventState}>
                         <option value="0">Choose Game:</option>
                         {
@@ -82,7 +83,7 @@ export const EditEvent = () => {
                     description: event.description,
                     date: event.date,
                     time: event.time,
-                    game: parseInt(event.gameId)
+                    game: parseInt(event.game)
                 }
                 // Send PUT request to API
                 updateEvent(eventId, eventObj)

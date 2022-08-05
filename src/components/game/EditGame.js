@@ -7,7 +7,7 @@ export const EditGame = () => {
     const navigate = useNavigate()
     const [gameTypes, setGameTypes] = useState([])
 
-    
+
     const [game, setGame] = useState({
         skillLevel: "",
         numberOfPlayers: "",
@@ -15,7 +15,7 @@ export const EditGame = () => {
         maker: "",
         gameTypeId: ""
     })
-    
+
     useEffect(() => {
         getSingleGame(gameId).then(data => setGame(data))
     },
@@ -33,7 +33,7 @@ export const EditGame = () => {
     }
 
     // for the name and value they need to match, if need to look at components to see how the case is
-    // 🦖🦖🦖 drop down is not appearing on edit. 
+    // 🦖🦖🦖have to select the dropdown on the edit, otherwise it will not work
 
     return (
         <form className="gameForm">
@@ -68,8 +68,8 @@ export const EditGame = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="gameTypeId">Game Type:</label>
-                    <select className="form-control" name="gameTypeId" value={game.gameTypeId} required onChange={changeGameState}>
+                    <label htmlFor="game_type">Game Type:</label>
+                    <select className="form-control" name="game_type" value={game.game_type?.id} required onChange={changeGameState}>
                         <option value="0">Choose Game Type:</option>
                         {
                             gameTypes.map(type => {
@@ -89,7 +89,7 @@ export const EditGame = () => {
                     title: game.title,
                     number_of_players: parseInt(game.number_of_players),
                     skill_level: parseInt(game.skill_level),
-                    game_type: parseInt(game.gameTypeId)
+                    game_type: parseInt(game.game_type)
                 }
                 // Send PUT request to API
                 updateGame(gameId, gameObj)
